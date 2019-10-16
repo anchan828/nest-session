@@ -10,6 +10,7 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
     project: path.resolve(__dirname, "tsconfig.eslint.json"),
+    noWatch: true,
   },
   plugins: ["@typescript-eslint", "sort-keys-fix"],
   rules: {
