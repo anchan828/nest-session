@@ -12,7 +12,7 @@ if (!packageName) {
 const lernaJson: { version: string } = JSON.parse(readFileSync(resolve(__dirname, "..", "lerna.json"), "utf8"));
 const rootPackageJson: any = JSON.parse(readFileSync(resolve(__dirname, "..", "package.json"), "utf8"));
 const packagesDir = resolve(__dirname, "..", "packages");
-const packageDir = resolve(packagesDir, packageName);
+const packageDir = resolve(packagesDir, packageName.replace(/^nest-/g, ""));
 
 if (existsSync(packageDir)) {
   throw new Error("Already exists: " + packageName);
@@ -52,7 +52,7 @@ const packageJson = {
     dist: "dist",
   },
   files: ["dist"],
-  homepage: `${rootPackageJson.homepage}/tree/master/packages/${packageName}#readme`,
+  homepage: `${rootPackageJson.homepage}/tree/master/packages/${packageName.replace(/^nest-/g, "")}#readme`,
   license: "MIT",
   main: "./dist/index.js",
   name: "@anchan828/" + packageName,

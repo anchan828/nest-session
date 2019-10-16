@@ -1,3 +1,3 @@
-# @anchan828/nest-lerna-template
+# @anchan828/nest-session
 
-This repository is template for nestjs with lerna.
+This repository is express session for nestjs
