@@ -47,7 +47,7 @@ describe("RedisSessionModule", () => {
       imports: [
         RedisSessionModule.register({
           redis: {
-            host: "localhost",
+            host: process.env.REDIS_HOST || "localhost",
           },
           session: {
             resave: false,
