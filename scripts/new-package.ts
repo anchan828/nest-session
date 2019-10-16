@@ -64,7 +64,7 @@ const packageJson = {
     lint: "node ../../node_modules/eslint/bin/eslint --ignore-path ../../.eslintignore '**/*.ts' '**/*.spec.ts'",
     "lint:fix": "npm run lint -- --fix",
     prepublishOnly: "rm -rf dist && npm run build && rm -f dist/*.tsbuildinfo && npm run copy:license",
-    test: "node ../../node_modules/jest/bin/jest --coverage --logHeapUsage --runInBand",
+    test: "node ../../node_modules/jest/bin/jest --coverage --logHeapUsage --runInBand --forceExit",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --logHeapUsage",
     "test:watch": "node ../../node_modules/jest/bin/jest --watch",
     watch: "rm -rf dist && node ../../node_modules/typescript/bin/tsc -w",
