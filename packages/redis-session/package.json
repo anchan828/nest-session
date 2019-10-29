@@ -36,7 +36,7 @@
     "connect-redis": "^4.0.3",
     "express-session": "^1.17.0",
     "ioredis": "^4.14.1",
-    "nestjs-session": "^0.3.0"
+    "nestjs-session": "^0.4.0"
   },
   "devDependencies": {
     "@types/connect-redis": "0.0.11",
