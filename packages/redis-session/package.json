@@ -31,7 +31,7 @@
     "watch": "rm -rf dist && node ../../node_modules/typescript/bin/tsc -w"
   },
   "types": "./dist/index.d.ts",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "dependencies": {
     "connect-redis": "^4.0.3",
     "express-session": "^1.17.0",
