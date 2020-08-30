@@ -1,0 +1,47 @@
+{
+  "author": "anchan828 <anchan828@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/anchan828/nest-session/issues"
+  },
+  "description": "> TODO: description",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/anchan828/nest-session/tree/master/packages/redis-session-fastify#readme",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "name": "@anchan828/nest-redis-session-fastify",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anchan828/nest-session.git"
+  },
+  "scripts": {
+    "build": "node ../../node_modules/typescript/bin/tsc -p tsconfig.build.json",
+    "build:watch": "node ../../node_modules/typescript/bin/tsc --watch",
+    "copy:license": "cp ../../LICENSE ./",
+    "lint": "node ../../node_modules/eslint/bin/eslint --ignore-path ../../.eslintignore '**/*.ts' '**/*.spec.ts'",
+    "lint:fix": "npm run lint -- --fix",
+    "prepublishOnly": "rm -rf dist && npm run build && rm -f dist/*.tsbuildinfo && npm run copy:license",
+    "test": "node ../../node_modules/jest/bin/jest --coverage --logHeapUsage --runInBand --forceExit",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --logHeapUsage",
+    "test:watch": "node ../../node_modules/jest/bin/jest --watch",
+    "watch": "rm -rf dist && node ../../node_modules/typescript/bin/tsc -w"
+  },
+  "types": "./dist/index.d.ts",
+  "version": "0.0.46",
+  "dependencies": {
+    "@nestjs/platform-fastify": "7.4.3",
+    "connect-redis": "5.0.0",
+    "fastify-cookie": "4.0.2",
+    "fastify-session": "5.0.0",
+    "ioredis": "4.17.3"
+  },
+  "devDependencies": {
+    "@types/connect-redis": "0.0.14",
+    "@types/ioredis": "4.17.3",
+    "fastify": "3.3.0"
+  }
+}
