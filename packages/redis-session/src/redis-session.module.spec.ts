@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Session } from "@nestjs/common";
+import { ExpressAdapter } from "@nestjs/platform-express";
 import { Test } from "@nestjs/testing";
 import * as request from "supertest";
 import { RedisSessionModule } from "./redis-session.module";
@@ -23,7 +24,7 @@ describe("RedisSessionModule", () => {
       ],
     }).compile();
 
-    const app = module.createNestApplication();
+    const app = module.createNestApplication(new ExpressAdapter());
     await app.init();
     await app.close();
   });
@@ -58,7 +59,7 @@ describe("RedisSessionModule", () => {
       ],
     }).compile();
 
-    const app = module.createNestApplication();
+    const app = module.createNestApplication(new ExpressAdapter());
     await app.init();
     let cookies = "";
     await request(app.getHttpServer())
