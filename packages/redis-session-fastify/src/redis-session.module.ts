@@ -42,7 +42,7 @@ export class RedisSessionModule implements NestModule {
       return;
     }
 
-    fastifyInstance.register(fastifyCookie, { secret: "my-secret" });
+    fastifyInstance.register(fastifyCookie);
     fastifyInstance.register(fastifySession, this.options.session);
   }
 }
