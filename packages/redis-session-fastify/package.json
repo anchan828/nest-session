@@ -37,7 +37,7 @@
     "connect-redis": "5.0.0",
     "fastify-cookie": "4.1.0",
     "fastify-session": "5.2.0",
-    "ioredis": "4.17.3"
+    "ioredis": "4.19.0"
   },
   "devDependencies": {
     "@types/connect-redis": "0.0.14",
