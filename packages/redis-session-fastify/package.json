@@ -31,7 +31,7 @@
     "watch": "rm -rf dist && node ../../node_modules/typescript/bin/tsc -w"
   },
   "types": "./dist/index.d.ts",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "dependencies": {
     "@nestjs/platform-fastify": "7.5.1",
     "connect-redis": "5.0.0",
