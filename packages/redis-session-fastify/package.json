@@ -40,7 +40,7 @@
     "ioredis": "4.19.2"
   },
   "devDependencies": {
-    "@types/connect-redis": "0.0.15",
+    "@types/connect-redis": "0.0.16",
     "@types/ioredis": "4.17.8",
     "fastify": "3.9.1"
   }
