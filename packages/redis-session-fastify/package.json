@@ -33,7 +33,7 @@
   "types": "./dist/index.d.ts",
   "version": "0.0.61",
   "dependencies": {
-    "@nestjs/platform-fastify": "7.6.1",
+    "@nestjs/platform-fastify": "7.6.2",
     "connect-redis": "5.0.0",
     "fastify-cookie": "4.2.0",
     "fastify-session": "5.2.1",
