@@ -37,11 +37,11 @@
     "connect-redis": "5.0.0",
     "fastify-cookie": "5.1.0",
     "fastify-session": "5.2.1",
-    "ioredis": "4.19.4"
+    "ioredis": "4.24.2"
   },
   "devDependencies": {
     "@types/connect-redis": "0.0.16",
-    "@types/ioredis": "4.19.3",
+    "@types/ioredis": "4.22.0",
     "fastify": "3.14.0"
   }
 }
