@@ -35,7 +35,7 @@
   "dependencies": {
     "connect-redis": "5.1.0",
     "express-session": "1.17.1",
-    "ioredis": "4.26.0",
+    "ioredis": "4.27.1",
     "nestjs-session": "1.0.1"
   },
   "devDependencies": {
