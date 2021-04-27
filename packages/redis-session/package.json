@@ -33,7 +33,7 @@
   "types": "./dist/index.d.ts",
   "version": "0.0.74",
   "dependencies": {
-    "connect-redis": "5.1.0",
+    "connect-redis": "5.2.0",
     "express-session": "1.17.1",
     "ioredis": "4.27.1",
     "nestjs-session": "1.0.1"
