@@ -34,7 +34,7 @@
   "version": "0.0.81",
   "dependencies": {
     "@nestjs/platform-fastify": "7.6.18",
-    "connect-redis": "5.2.0",
+    "connect-redis": "6.0.0",
     "fastify-cookie": "5.3.1",
     "fastify-session": "5.2.1",
     "ioredis": "4.27.6"
