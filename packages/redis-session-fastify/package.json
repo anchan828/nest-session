@@ -33,14 +33,17 @@
   "types": "./dist/index.d.ts",
   "version": "0.0.86",
   "dependencies": {
-    "@nestjs/platform-fastify": "8.0.3",
     "connect-redis": "6.0.0",
     "fastify-cookie": "5.3.1",
     "fastify-session": "5.2.1",
     "ioredis": "4.27.6"
   },
   "devDependencies": {
+    "@nestjs/platform-fastify": "8.0.3",
     "@types/connect-redis": "0.0.17",
+    "@nestjs/common": "8.0.3",
+    "@nestjs/core": "8.0.3",
+    "@nestjs/testing": "8.0.3",
     "@types/ioredis": "4.26.5",
     "fastify": "3.19.1"
   }

@@ -1,2 +1,1 @@
-export { NestSessionOptions } from "nestjs-session";
-export { RedisSessionModule } from "./redis-session.module";
+export { RedisSessionModule, RedisSessionOptions } from "./redis-session.module";
