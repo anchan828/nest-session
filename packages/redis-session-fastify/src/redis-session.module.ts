@@ -12,9 +12,7 @@ const RedisStore = ConnectRedis(fastifySession);
 const REDIS_SESSION_FASTIFY_MODULE = "REDIS_SESSION_FASTIFY_MODULE" as const;
 type RedisSessionFastifyOptions = { redis?: RedisOptions; session: FastifySessionPlugin.Options };
 @Global()
-@Module({
-  imports: [DiscoveryModule],
-})
+@Module({ imports: [DiscoveryModule] })
 export class RedisSessionModule implements NestModule, OnModuleDestroy {
   public static register(options: RedisSessionFastifyOptions): DynamicModule {
     options.session.store = new RedisStore({ client: new Redis(options.redis) });
