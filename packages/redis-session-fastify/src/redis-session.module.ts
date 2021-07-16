@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { DynamicModule, Global, Inject, Module, NestModule } from "@nestjs/common";
+import { DynamicModule, Global, Inject, Module, NestModule, OnModuleDestroy } from "@nestjs/common";
 import { DiscoveryModule, DiscoveryService } from "@nestjs/core";
 import * as ConnectRedis from "connect-redis";
 import { FastifyInstance } from "fastify";
 import FastifySessionPlugin from "fastify-session";
-import { RedisOptions } from "ioredis";
+import { Redis as IORedis, RedisOptions } from "ioredis";
 const fastifySession = require("fastify-session");
 const fastifyCookie = require("fastify-cookie");
 const Redis = require("ioredis");
@@ -15,7 +15,7 @@ type RedisSessionFastifyOptions = { redis?: RedisOptions; session: FastifySessio
 @Module({
   imports: [DiscoveryModule],
 })
-export class RedisSessionModule implements NestModule {
+export class RedisSessionModule implements NestModule, OnModuleDestroy {
   public static register(options: RedisSessionFastifyOptions): DynamicModule {
     options.session.store = new RedisStore({ client: new Redis(options.redis) });
     return {
@@ -33,6 +33,11 @@ export class RedisSessionModule implements NestModule {
     @Inject(REDIS_SESSION_FASTIFY_MODULE) private readonly options: RedisSessionFastifyOptions,
     private readonly discovery: DiscoveryService,
   ) {}
+
+  public onModuleDestroy(): void {
+    const redisstore: any & { client: IORedis } = this.options.session.store;
+    redisstore.client.disconnect();
+  }
 
   public configure(): void {
     const adapterHost = this.discovery.getProviders().find((p) => p.name === "HttpAdapterHost");
