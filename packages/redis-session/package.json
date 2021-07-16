@@ -31,16 +31,16 @@
     "watch": "rm -rf dist && node ../../node_modules/typescript/bin/tsc -w"
   },
   "types": "./dist/index.d.ts",
-  "version": "0.0.86",
+  "version": "0.1.0",
   "dependencies": {
     "connect-redis": "6.0.0",
     "express-session": "1.17.2",
     "ioredis": "4.27.6"
   },
   "devDependencies": {
-    "@nestjs/platform-express": "8.0.3",
     "@nestjs/common": "8.0.3",
     "@nestjs/core": "8.0.3",
+    "@nestjs/platform-express": "8.0.3",
     "@nestjs/testing": "8.0.3",
     "@types/connect-redis": "0.0.17",
     "@types/express": "4.17.13",
