@@ -1,17 +1,17 @@
-# @anchan828/nest-redis-session
+# @anchan828/nest-redis-session-express
 
 This module is for express.
 
 ## Install
 
 ```shell
-npm i @anchan828/nest-redis-session
+npm i @anchan828/nest-redis-session-express
 ```
 
 ## Usage
 
 ```typescript
-import { RedisSessionModule } from "@anchan828/nest-redis-session";
+import { RedisSessionModule } from "@anchan828/nest-redis-session-express";
 
 @Module({
   imports: [

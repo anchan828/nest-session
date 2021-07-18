@@ -13,7 +13,7 @@
   "homepage": "https://github.com/anchan828/nest-session/tree/master/packages/redis-session#readme",
   "license": "MIT",
   "main": "./dist/index.js",
-  "name": "@anchan828/nest-redis-session",
+  "name": "@anchan828/nest-redis-session-express",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anchan828/nest-session.git"
