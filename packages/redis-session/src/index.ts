@@ -1,1 +1,6 @@
-export { RedisSessionModule, RedisSessionOptions } from "./redis-session.module";
+export {
+  RedisSessionModuleAsyncOptions,
+  RedisSessionModuleOptions,
+  RedisSessionModuleOptionsFactory,
+} from "./redis-session.interface";
+export { RedisSessionModule } from "./redis-session.module";
