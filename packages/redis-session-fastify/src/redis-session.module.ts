@@ -11,7 +11,7 @@ import {
   Provider,
   Type,
 } from "@nestjs/common";
-import { DiscoveryModule, DiscoveryService } from "@nestjs/core";
+import { HttpAdapterHost } from "@nestjs/core";
 import * as ConnectRedis from "connect-redis";
 import { FastifyInstance } from "fastify";
 import { Redis as IORedis } from "ioredis";
@@ -27,7 +27,7 @@ const RedisStore = ConnectRedis(fastifySession);
 const REDIS_SESSION_FASTIFY_MODULE = "REDIS_SESSION_FASTIFY_MODULE" as const;
 
 @Global()
-@Module({ imports: [DiscoveryModule] })
+@Module({})
 export class RedisSessionModule implements NestModule, OnModuleDestroy {
   public static register(options: RedisSessionFastifyModuleOptions): DynamicModule {
     return {
@@ -51,7 +51,7 @@ export class RedisSessionModule implements NestModule, OnModuleDestroy {
 
   constructor(
     @Inject(REDIS_SESSION_FASTIFY_MODULE) private readonly options: RedisSessionFastifyModuleOptions,
-    private readonly discovery: DiscoveryService,
+    private readonly adapterHost: HttpAdapterHost,
   ) {}
 
   public onModuleDestroy(): void {
@@ -60,9 +60,7 @@ export class RedisSessionModule implements NestModule, OnModuleDestroy {
   }
 
   public configure(): void {
-    const adapterHost = this.discovery.getProviders().find((p) => p.name === "HttpAdapterHost");
-
-    const fastifyInstance = adapterHost?.instance?.httpAdapter?.getInstance() as FastifyInstance;
+    const fastifyInstance = this.adapterHost?.httpAdapter?.getInstance() as FastifyInstance;
     if (!fastifyInstance) {
       return;
     }
