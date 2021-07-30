@@ -30,9 +30,9 @@
   },
   "homepage": "https://github.com/anchan828/nest-session",
   "devDependencies": {
-    "@commitlint/cli": "12.1.4",
-    "@commitlint/config-conventional": "12.1.4",
-    "@commitlint/config-lerna-scopes": "12.1.4",
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "@commitlint/config-lerna-scopes": "13.1.0",
     "@types/glob": "7.1.4",
     "@types/jest": "26.0.24",
     "@types/node": "16.3.2",
