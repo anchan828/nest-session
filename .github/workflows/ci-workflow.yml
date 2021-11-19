@@ -6,10 +6,6 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    container:
-      image: node:lts
-      env:
-        REDIS_HOST: redis
     services:
       redis:
         image: redis
