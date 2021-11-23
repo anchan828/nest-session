@@ -36,7 +36,7 @@
     "connect-redis": "6.0.0",
     "fastify-cookie": "5.3.2",
     "fastify-session": "5.2.1",
-    "ioredis": "4.28.0"
+    "ioredis": "4.28.1"
   },
   "devDependencies": {
     "@nestjs/common": "8.2.3",
