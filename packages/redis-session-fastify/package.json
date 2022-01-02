@@ -34,7 +34,7 @@
   "version": "0.1.26",
   "dependencies": {
     "connect-redis": "6.0.0",
-    "fastify-cookie": "5.4.0",
+    "fastify-cookie": "5.5.0",
     "fastify-session": "5.2.1",
     "ioredis": "4.28.2"
   },
