@@ -44,7 +44,7 @@
     "@nestjs/platform-fastify": "8.2.4",
     "@nestjs/testing": "8.2.4",
     "@types/connect-redis": "0.0.18",
-    "@types/ioredis": "4.28.6",
+    "@types/ioredis": "4.28.7",
     "fastify": "3.25.3",
     "rxjs": "7.5.1"
   },
