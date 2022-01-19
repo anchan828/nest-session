@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/anchan828/nest-session",
   "devDependencies": {
-    "@commitlint/cli": "16.0.2",
+    "@commitlint/cli": "16.0.3",
     "@commitlint/config-conventional": "16.0.0",
     "@commitlint/config-lerna-scopes": "16.0.0",
     "@types/glob": "7.2.0",
@@ -49,7 +49,7 @@
     "husky": "7.0.4",
     "jest": "27.4.7",
     "lerna": "4.0.0",
-    "lint-staged": "12.2.0",
+    "lint-staged": "12.2.1",
     "prettier": "2.5.1",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
