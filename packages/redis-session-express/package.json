@@ -46,7 +46,7 @@
     "@types/express": "4.17.13",
     "@types/express-session": "1.17.4",
     "@types/ioredis": "4.28.8",
-    "rxjs": "7.5.2"
+    "rxjs": "7.5.3"
   },
   "peerDependencies": {
     "@nestjs/common": "^8.0.0"
