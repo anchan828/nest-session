@@ -33,7 +33,7 @@
   "types": "./dist/index.d.ts",
   "version": "0.1.33",
   "dependencies": {
-    "connect-redis": "6.1.1",
+    "connect-redis": "6.1.2",
     "express-session": "1.17.2",
     "ioredis": "4.28.5"
   },
