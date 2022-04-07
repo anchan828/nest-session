@@ -39,10 +39,10 @@
     "ioredis": "5.0.3"
   },
   "devDependencies": {
-    "@nestjs/common": "8.4.3",
-    "@nestjs/core": "8.4.3",
-    "@nestjs/platform-fastify": "8.4.3",
-    "@nestjs/testing": "8.4.3",
+    "@nestjs/common": "8.4.4",
+    "@nestjs/core": "8.4.4",
+    "@nestjs/platform-fastify": "8.4.4",
+    "@nestjs/testing": "8.4.4",
     "@types/connect-redis": "0.0.18",
     "fastify": "3.28.0",
     "rxjs": "7.5.5"
