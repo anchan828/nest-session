@@ -5,17 +5,20 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "postinstall": "husky install && npm run bootstrap && npm run build",
+    "postinstall": "husky install",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build",
+    "build": "turbo run build",
     "format": "prettier --write '**/*.{js,json,yml,yaml,md}'",
-    "lint": "eslint --ignore-pattern packages '**/*.ts' && lerna run lint",
-    "lint:fix": "eslint --ignore-pattern packages --fix '**/*.ts' && lerna run lint:fix",
+    "lint": "eslint --ignore-pattern packages '**/*.ts' && turbo run lint",
+    "lint:fix": "eslint --ignore-pattern packages --fix '**/*.ts' && turbo run lint:fix",
     "publish": "lerna publish --yes patch",
     "publish:minor": "lerna publish --yes minor",
     "publish:major": "lerna publish --yes major",
-    "test": "lerna run test && npx @anchan828/merge-coverage",
+    "test": "turbo run test",
     "new": "ts-node scripts/new-package.ts",
     "postnew": "ts-node scripts/generate-vs-launch.ts"
   },
@@ -48,7 +51,7 @@
     "glob": "7.2.0",
     "husky": "7.0.4",
     "jest": "27.5.1",
-    "lerna": "4.0.0",
+    "@lerna-lite/cli": "1.0.5",
     "lint-staged": "12.3.8",
     "prettier": "2.6.2",
     "reflect-metadata": "0.1.13",
@@ -56,6 +59,7 @@
     "supertest": "6.2.2",
     "ts-jest": "27.1.4",
     "ts-node": "10.7.0",
+    "turbo": "1.2.4",
     "typescript": "4.6.3"
   }
 }
