@@ -44,7 +44,7 @@
     "@nestjs/platform-fastify": "8.4.6",
     "@nestjs/testing": "8.4.6",
     "@types/connect-redis": "0.0.18",
-    "fastify": "3.29.0",
+    "fastify": "4.0.0",
     "rxjs": "7.5.5"
   },
   "peerDependencies": {
