@@ -39,17 +39,17 @@
     "ioredis": "5.1.0"
   },
   "devDependencies": {
-    "@nestjs/common": "8.4.7",
-    "@nestjs/core": "8.4.7",
-    "@nestjs/platform-fastify": "8.4.7",
-    "@nestjs/testing": "8.4.7",
+    "@nestjs/common": "9.0.1",
+    "@nestjs/core": "9.0.1",
+    "@nestjs/platform-fastify": "9.0.1",
+    "@nestjs/testing": "9.0.1",
     "@types/connect-redis": "0.0.18",
     "fastify": "4.0.0",
     "rxjs": "7.5.5"
   },
   "peerDependencies": {
-    "@nestjs/common": "^8.0.0",
-    "@nestjs/core": "^8.0.0"
+    "@nestjs/common": "^8.0.0 || ^9.0.0",
+    "@nestjs/core": "^8.0.0 || ^9.0.0"
   },
   "publishConfig": {
     "access": "public"
