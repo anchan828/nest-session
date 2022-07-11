@@ -1,6 +1,6 @@
 {
   "name": "@anchan828/nest-redis-session-fastify",
-  "version": "0.1.50",
+  "version": "1.0.0",
   "description": "> TODO: description",
   "homepage": "https://github.com/anchan828/nest-session/tree/master/packages/redis-session-fastify#readme",
   "bugs": {
