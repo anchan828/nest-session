@@ -1,10 +1,10 @@
 import { ModuleMetadata, Type } from "@nestjs/common";
+import * as ConnectRedis from "connect-redis";
 import * as expressSession from "express-session";
-import { RedisOptions } from "ioredis";
 
 export interface RedisSessionModuleOptions {
   session: expressSession.SessionOptions;
-  redis?: RedisOptions;
+  redisClient?: ConnectRedis.Client;
 }
 export interface RedisSessionModuleAsyncOptions extends Pick<ModuleMetadata, "imports"> {
   useClass?: Type<RedisSessionModuleOptionsFactory>;

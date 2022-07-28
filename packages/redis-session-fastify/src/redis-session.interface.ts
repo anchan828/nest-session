@@ -1,9 +1,9 @@
+import FastifySessionPlugin from "@fastify/session";
 import { ModuleMetadata, Type } from "@nestjs/common";
-import FastifySessionPlugin from "fastify-session";
-import { RedisOptions } from "ioredis";
+import * as ConnectRedis from "connect-redis";
 
 export interface RedisSessionFastifyModuleOptions {
-  redis?: RedisOptions;
+  redisClient?: ConnectRedis.Client;
   session: FastifySessionPlugin.Options;
 }
 export interface RedisSessionFastifyModuleAsyncOptions extends Pick<ModuleMetadata, "imports"> {
