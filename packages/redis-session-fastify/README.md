@@ -35,7 +35,7 @@ import Redis from "ioredis";
 const redisClient = new Redis();
 
 // redis-mock
-import * as RedisMock from "redis-mock";
+import { createClient } from "redis-mock";
 const redisClient = createClient();
 
 @Module({
