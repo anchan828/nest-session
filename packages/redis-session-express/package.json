@@ -38,10 +38,10 @@
     "ioredis": "5.2.2"
   },
   "devDependencies": {
-    "@nestjs/common": "9.0.1",
-    "@nestjs/core": "9.0.1",
-    "@nestjs/platform-express": "9.0.1",
-    "@nestjs/testing": "9.0.1",
+    "@nestjs/common": "9.0.6",
+    "@nestjs/core": "9.0.6",
+    "@nestjs/platform-express": "9.0.6",
+    "@nestjs/testing": "9.0.6",
     "@types/connect-redis": "0.0.18",
     "@types/express": "4.17.13",
     "@types/express-session": "1.17.5",
