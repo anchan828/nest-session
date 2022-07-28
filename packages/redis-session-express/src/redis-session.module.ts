@@ -15,14 +15,12 @@ import {
 import * as ConnectRedis from "connect-redis";
 import * as expressSession from "express-session";
 import * as session from "express-session";
-import { Redis as IORedis } from "ioredis";
 import {
   RedisSessionModuleAsyncOptions,
   RedisSessionModuleOptions,
   RedisSessionModuleOptionsFactory,
 } from "./redis-session.interface";
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const Redis = require("ioredis");
+
 const RedisStore = ConnectRedis(session);
 
 const REDIS_SESSION_OPTIONS = "REDIS_SESSION_OPTIONS";
@@ -32,9 +30,12 @@ const REDIS_SESSION_OPTIONS = "REDIS_SESSION_OPTIONS";
 export class RedisSessionModule implements NestModule, OnModuleDestroy {
   constructor(@Inject(REDIS_SESSION_OPTIONS) private readonly options: RedisSessionModuleOptions) {}
 
-  public onModuleDestroy(): void {
-    const redisstore: any & { client: IORedis } = this.options.session.store;
-    redisstore.client.disconnect();
+  public async onModuleDestroy(): Promise<void> {
+    if (!(this.options.redisClient && this.options.redisClient.disconnect)) {
+      return;
+    }
+
+    await this.options.redisClient.disconnect();
   }
 
   public static register(options: RedisSessionModuleOptions): DynamicModule {
@@ -53,7 +54,7 @@ export class RedisSessionModule implements NestModule, OnModuleDestroy {
   }
 
   public configure(consumer: MiddlewareConsumer): void {
-    this.options.session.store = new RedisStore({ client: new Redis(this.options.redis) });
+    this.options.session.store = new RedisStore({ client: this.options.redisClient });
     const middleware = expressSession(this.options.session);
     consumer.apply(middleware).forRoutes({ method: RequestMethod.ALL, path: "*" });
   }

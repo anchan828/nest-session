@@ -1,10 +1,34 @@
 import { Controller, Get, Inject, Post, Provider, Session } from "@nestjs/common";
 import { ExpressAdapter } from "@nestjs/platform-express";
 import { Test } from "@nestjs/testing";
+import Redis from "ioredis";
+import { createClient } from "redis";
+import * as RedisMock from "redis-mock";
 import * as request from "supertest";
 import { RedisSessionModuleOptionsFactory } from "./redis-session.interface";
 import { RedisSessionModule } from "./redis-session.module";
-describe("RedisSessionModule", () => {
+describe.each([
+  {
+    createRedisClient: async () => {
+      const client = createClient({ legacyMode: true });
+      await client.connect();
+      return client;
+    },
+    name: "redis",
+  },
+  {
+    createRedisClient: async () => {
+      return new Redis();
+    },
+    name: "ioredis",
+  },
+  {
+    createRedisClient: async () => {
+      return RedisMock.createClient();
+    },
+    name: "redis-mock",
+  },
+])("RedisSessionModule: ($name)", ({ createRedisClient }) => {
   it("should be defined", () => {
     expect(RedisSessionModule).toBeDefined();
   });
@@ -13,9 +37,7 @@ describe("RedisSessionModule", () => {
     const module = await Test.createTestingModule({
       imports: [
         RedisSessionModule.register({
-          redis: {
-            host: "localhost",
-          },
+          redisClient: await createRedisClient(),
           session: {
             resave: false,
             saveUninitialized: false,
@@ -48,9 +70,7 @@ describe("RedisSessionModule", () => {
       controllers: [TestController],
       imports: [
         RedisSessionModule.register({
-          redis: {
-            host: process.env.REDIS_HOST || "localhost",
-          },
+          redisClient: await createRedisClient(),
           session: {
             resave: false,
             saveUninitialized: false,
@@ -81,10 +101,8 @@ describe("RedisSessionModule", () => {
     const module = await Test.createTestingModule({
       imports: [
         RedisSessionModule.registerAsync({
-          useFactory: () => ({
-            redis: {
-              host: "localhost",
-            },
+          useFactory: async () => ({
+            redisClient: await createRedisClient(),
             session: {
               resave: false,
               saveUninitialized: false,
@@ -117,17 +135,16 @@ describe("RedisSessionModule", () => {
     class ConfigService implements RedisSessionModuleOptionsFactory {
       constructor(@Inject("REDIS_HOST") private REDIS_HOST: string) {}
 
-      createRedisSessionModuleOptions() {
+      async createRedisSessionModuleOptions() {
         return {
-          redis: {
-            host: this.REDIS_HOST,
-          },
+          redisClient: await createRedisClient(),
           session: {
             cookie: {
               secure: false,
             },
+            resave: false,
             saveUninitialized: false,
-            secret: "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            secret: "da39a3ee5e6b4b0d3255bfef95601890afd80708",
           },
         };
       }

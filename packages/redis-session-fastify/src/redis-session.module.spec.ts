@@ -1,12 +1,35 @@
 import { Controller, Get, Inject, Post, Provider, Session } from "@nestjs/common";
 import { FastifyAdapter } from "@nestjs/platform-fastify";
 import { Test } from "@nestjs/testing";
-import { Session as FastifySession } from "fastify";
+import Redis from "ioredis";
+import { createClient } from "redis";
+import * as RedisMock from "redis-mock";
 import * as request from "supertest";
 import { RedisSessionFastifyModuleOptionsFactory } from "./redis-session.interface";
 import { RedisSessionModule } from "./redis-session.module";
 
-describe("RedisSessionModule", () => {
+describe.each([
+  {
+    createRedisClient: async () => {
+      const client = createClient({ legacyMode: true });
+      await client.connect();
+      return client;
+    },
+    name: "redis",
+  },
+  {
+    createRedisClient: async () => {
+      return new Redis();
+    },
+    name: "ioredis",
+  },
+  {
+    createRedisClient: async () => {
+      return RedisMock.createClient();
+    },
+    name: "redis-mock",
+  },
+])("RedisSessionModule: ($name)", ({ createRedisClient }) => {
   it("should be defined", () => {
     expect(RedisSessionModule).toBeDefined();
   });
@@ -15,9 +38,7 @@ describe("RedisSessionModule", () => {
     const module = await Test.createTestingModule({
       imports: [
         RedisSessionModule.register({
-          redis: {
-            host: "localhost",
-          },
+          redisClient: await createRedisClient(),
           session: {
             saveUninitialized: false,
             secret: "da39a3ee5e6b4b0d3255bfef95601890afd80709",
@@ -34,12 +55,12 @@ describe("RedisSessionModule", () => {
     @Controller()
     class TestController {
       @Post("setSession")
-      setSession(@Session() session: FastifySession): void {
+      setSession(@Session() session: Record<string, any>): void {
         session.test = "ok";
       }
 
       @Get("getSession")
-      getSession(@Session() session: FastifySession): string {
+      getSession(@Session() session: Record<string, any>): string {
         return session.test;
       }
     }
@@ -48,9 +69,7 @@ describe("RedisSessionModule", () => {
       controllers: [TestController],
       imports: [
         RedisSessionModule.register({
-          redis: {
-            host: process.env.REDIS_HOST || "localhost",
-          },
+          redisClient: await createRedisClient(),
           session: {
             cookie: {
               secure: false,
@@ -83,10 +102,8 @@ describe("RedisSessionModule", () => {
     const module = await Test.createTestingModule({
       imports: [
         RedisSessionModule.registerAsync({
-          useFactory: () => ({
-            redis: {
-              host: "localhost",
-            },
+          useFactory: async () => ({
+            redisClient: await createRedisClient(),
             session: {
               saveUninitialized: false,
               secret: "da39a3ee5e6b4b0d3255bfef95601890afd80709",
@@ -104,12 +121,12 @@ describe("RedisSessionModule", () => {
     @Controller()
     class TestController {
       @Post("setSession")
-      setSession(@Session() session: FastifySession): void {
+      setSession(@Session() session: Record<string, any>): void {
         session.test = "ok";
       }
 
       @Get("getSession")
-      getSession(@Session() session: FastifySession): string {
+      getSession(@Session() session: Record<string, any>): string {
         return session.test;
       }
     }
@@ -117,11 +134,9 @@ describe("RedisSessionModule", () => {
     class ConfigService implements RedisSessionFastifyModuleOptionsFactory {
       constructor(@Inject("REDIS_HOST") private REDIS_HOST: string) {}
 
-      createRedisSessionFastifyModuleOptions() {
+      async createRedisSessionFastifyModuleOptions() {
         return {
-          redis: {
-            host: this.REDIS_HOST,
-          },
+          redisClient: await createRedisClient(),
           session: {
             cookie: {
               secure: false,
