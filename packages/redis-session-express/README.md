@@ -31,12 +31,16 @@ import { createClient } from "redis";
 const redisClient = createClient();
 
 // ioredis
-import Redis from "ioredis";
-const redisClient = new Redis();
+import IORedis from "ioredis";
+const redisClient = new IORedis();
 
 // redis-mock
 import { createClient } from "redis-mock";
 const redisClient = createClient();
+
+// ioredis-mock
+const IORedisMock = require("ioredis-mock");
+const redisClient = new IORedisMock();
 
 @Module({
   imports: [

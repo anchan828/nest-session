@@ -1,12 +1,14 @@
 import { Controller, Get, Inject, Post, Provider, Session } from "@nestjs/common";
 import { ExpressAdapter } from "@nestjs/platform-express";
 import { Test } from "@nestjs/testing";
-import Redis from "ioredis";
+import IORedis from "ioredis";
 import { createClient } from "redis";
 import * as RedisMock from "redis-mock";
 import * as request from "supertest";
 import { RedisSessionModuleOptionsFactory } from "./redis-session.interface";
 import { RedisSessionModule } from "./redis-session.module";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const IORedisMock = require("ioredis-mock");
 describe.each([
   {
     createRedisClient: async () => {
@@ -18,7 +20,7 @@ describe.each([
   },
   {
     createRedisClient: async () => {
-      return new Redis();
+      return new IORedis();
     },
     name: "ioredis",
   },
@@ -27,6 +29,12 @@ describe.each([
       return RedisMock.createClient();
     },
     name: "redis-mock",
+  },
+  {
+    createRedisClient: async () => {
+      return new IORedisMock();
+    },
+    name: "ioredis-mock",
   },
 ])("RedisSessionModule: ($name)", ({ createRedisClient }) => {
   it("should be defined", () => {
