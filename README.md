@@ -2,7 +2,6 @@
 
 Sample: https://codesandbox.io/s/anchan828-nest-redis-session-express-sample-cne6w0?file=/src/app.module.ts
 
-
 ```ts
 import { RedisSessionModule } from "@anchan828/nest-redis-session-express";
 // or
@@ -18,12 +17,16 @@ import { createClient } from "redis";
 const redisClient = createClient();
 
 // ioredis
-import Redis from "ioredis";
-const redisClient = new Redis();
+import IORedis from "ioredis";
+const redisClient = new IORedis();
 
 // redis-mock
 import { createClient } from "redis-mock";
 const redisClient = createClient();
+
+// ioredis-mock
+const IORedisMock = require("ioredis-mock");
+const redisClient = new IORedisMock();
 
 @Module({
   imports: [
@@ -38,5 +41,4 @@ const redisClient = createClient();
   ],
 })
 export class AppModule {}
-
 ```
