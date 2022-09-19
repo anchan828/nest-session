@@ -33,7 +33,7 @@
     "watch": "rm -rf dist && tsc -w"
   },
   "dependencies": {
-    "@fastify/cookie": "^8.1.0",
+    "@fastify/cookie": "^8.2.0",
     "@fastify/session": "^10.0.0",
     "connect-redis": "^6.1.3"
   },
