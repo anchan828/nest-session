@@ -1,6 +1,6 @@
 {
   "name": "@anchan828/nest-redis-session-express",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "> TODO: description",
   "homepage": "https://github.com/anchan828/nest-session/tree/master/packages/redis-session#readme",
   "bugs": {
