@@ -44,7 +44,7 @@
     "@nestjs/testing": "^9.2.1",
     "@types/connect-redis": "^0.0.19",
     "@types/redis-mock": "^0.17.1",
-    "fastify": "^4.10.2",
+    "fastify": "^3.29.4",
     "ioredis": "^5.2.4",
     "ioredis-mock": "^8.2.2",
     "redis": "^4.5.1",
@@ -54,7 +54,7 @@
   "peerDependencies": {
     "@nestjs/common": "^9.2.1",
     "@nestjs/core": "^9.2.1",
-    "fastify": "^4.10.2"
+    "fastify": "^3.29.4"
   },
   "publishConfig": {
     "access": "public"
