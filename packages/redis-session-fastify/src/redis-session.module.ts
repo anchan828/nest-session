@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import fastifyCookie from "@fastify/cookie";
-import fastifySession from "@fastify/session";
+import * as fastifyCookie from "@fastify/cookie";
+import * as fastifySession from "@fastify/session";
 import {
   ClassProvider,
   DynamicModule,
