@@ -67,8 +67,8 @@ export class RedisSessionModule implements NestModule, OnModuleDestroy {
       return;
     }
 
-    fastifyInstance.register(fastifyCookie);
-    fastifyInstance.register(fastifySession, {
+    fastifyInstance.register(fastifyCookie as any);
+    fastifyInstance.register(fastifySession as any, {
       ...this.options.session,
       store: new RedisStore({ client: this.options.redisClient }) as unknown as fastifySession.SessionStore,
     });
