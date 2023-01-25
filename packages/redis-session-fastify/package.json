@@ -45,7 +45,7 @@
     "@types/connect-redis": "^0.0.19",
     "@types/redis-mock": "^0.17.1",
     "fastify": "^4.10.2",
-    "ioredis": "^5.2.5",
+    "ioredis": "^5.2.6",
     "ioredis-mock": "^8.2.2",
     "redis": "^4.5.1",
     "redis-mock": "^0.56.3",
