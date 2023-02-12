@@ -42,7 +42,7 @@
     "@nestjs/core": "^9.3.8",
     "@nestjs/platform-fastify": "^9.3.8",
     "@nestjs/testing": "^9.3.8",
-    "@types/connect-redis": "^0.0.19",
+    "@types/connect-redis": "^0.0.20",
     "@types/redis-mock": "^0.17.1",
     "fastify": "^4.13.0",
     "ioredis": "^5.3.1",
