@@ -33,7 +33,7 @@
     "watch": "rm -rf dist && tsc -w"
   },
   "dependencies": {
-    "connect-redis": "^6.1.3",
+    "connect-redis": "^7.1.0",
     "express-session": "^1.17.3"
   },
   "devDependencies": {
