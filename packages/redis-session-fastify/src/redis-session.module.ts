@@ -14,7 +14,7 @@ import {
   Type,
 } from "@nestjs/common";
 import { HttpAdapterHost } from "@nestjs/core";
-import * as ConnectRedis from "connect-redis";
+import RedisStore from "connect-redis";
 import { FastifyInstance } from "fastify";
 import {
   RedisSessionFastifyModuleAsyncOptions,
@@ -22,7 +22,6 @@ import {
   RedisSessionFastifyModuleOptionsFactory,
 } from "./redis-session.interface";
 
-const RedisStore = ConnectRedis(fastifySession as any);
 const REDIS_SESSION_FASTIFY_MODULE = "REDIS_SESSION_FASTIFY_MODULE" as const;
 
 @Global()

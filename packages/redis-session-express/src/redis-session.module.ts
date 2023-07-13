@@ -12,16 +12,13 @@ import {
   RequestMethod,
   Type,
 } from "@nestjs/common";
-import * as ConnectRedis from "connect-redis";
-import * as expressSession from "express-session";
+import RedisStore from "connect-redis";
 import * as session from "express-session";
 import {
   RedisSessionModuleAsyncOptions,
   RedisSessionModuleOptions,
   RedisSessionModuleOptionsFactory,
 } from "./redis-session.interface";
-
-const RedisStore = ConnectRedis(session);
 
 const REDIS_SESSION_OPTIONS = "REDIS_SESSION_OPTIONS";
 
@@ -55,7 +52,7 @@ export class RedisSessionModule implements NestModule, OnModuleDestroy {
 
   public configure(consumer: MiddlewareConsumer): void {
     this.options.session.store = new RedisStore({ client: this.options.redisClient });
-    const middleware = expressSession(this.options.session);
+    const middleware = session(this.options.session);
     consumer.apply(middleware).forRoutes({ method: RequestMethod.ALL, path: "*" });
   }
 }

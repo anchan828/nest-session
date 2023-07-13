@@ -3,7 +3,6 @@ import { ExpressAdapter } from "@nestjs/platform-express";
 import { Test } from "@nestjs/testing";
 import IORedis from "ioredis";
 import { createClient } from "redis";
-import * as RedisMock from "redis-mock";
 import * as request from "supertest";
 import { RedisSessionModuleOptionsFactory } from "./redis-session.interface";
 import { RedisSessionModule } from "./redis-session.module";
@@ -12,7 +11,7 @@ const IORedisMock = require("ioredis-mock");
 describe.each([
   {
     createRedisClient: async () => {
-      const client = createClient({ legacyMode: true });
+      const client = createClient();
       await client.connect();
       return client;
     },
@@ -23,12 +22,6 @@ describe.each([
       return new IORedis();
     },
     name: "ioredis",
-  },
-  {
-    createRedisClient: async () => {
-      return RedisMock.createClient();
-    },
-    name: "redis-mock",
   },
   {
     createRedisClient: async () => {
