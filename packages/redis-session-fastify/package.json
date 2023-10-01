@@ -38,16 +38,16 @@
     "connect-redis": "^7.1.0"
   },
   "devDependencies": {
-    "@nestjs/common": "^10.2.6",
-    "@nestjs/core": "^10.2.6",
-    "@nestjs/platform-fastify": "^10.2.6",
-    "@nestjs/testing": "^10.2.6",
-    "fastify": "^4.23.2",
-    "ioredis": "^5.3.2",
-    "ioredis-mock": "^8.9.0",
-    "redis": "^4.6.10",
-    "redis-mock": "^0.56.3",
-    "rxjs": "^7.8.1"
+    "@nestjs/common": "10.2.6",
+    "@nestjs/core": "10.2.6",
+    "@nestjs/platform-fastify": "10.2.6",
+    "@nestjs/testing": "10.2.6",
+    "fastify": "4.23.2",
+    "ioredis": "5.3.2",
+    "ioredis-mock": "8.9.0",
+    "redis": "4.6.10",
+    "redis-mock": "0.56.3",
+    "rxjs": "7.8.1"
   },
   "peerDependencies": {
     "@nestjs/common": "^10.2.1",
