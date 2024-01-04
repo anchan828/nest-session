@@ -30,8 +30,8 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.4.3",
-    "@commitlint/config-conventional": "18.4.3",
+    "@commitlint/cli": "18.4.4",
+    "@commitlint/config-conventional": "18.4.4",
     "@lerna-lite/cli": "3.1.0",
     "@lerna-lite/publish": "3.1.0",
     "@types/glob": "8.1.0",
@@ -56,7 +56,7 @@
     "supertest": "6.3.3",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.2",
-    "turbo": "1.11.2",
+    "turbo": "1.11.3",
     "typescript": "5.3.3"
   }
 }
